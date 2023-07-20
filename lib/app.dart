@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/data/model/restaurant.dart';
+import 'package:restaurant_app/domain/entity/restaurants/restaurants.dart';
 import 'package:restaurant_app/ui/detail/detail_screen.dart';
 import 'package:restaurant_app/ui/home/home_screen.dart';
 
@@ -18,7 +18,7 @@ class App extends StatelessWidget {
         HomeScreen.routeName: (context) => const HomeScreen(),
         DetailScreen.routeName: (context) => DetailScreen(
             restaurant:
-                ModalRoute.of(context)?.settings.arguments as Restaurant)
+                ModalRoute.of(context)?.settings.arguments as Restaurants)
       },
     );
   }
