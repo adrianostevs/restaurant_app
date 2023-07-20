@@ -1,16 +1,18 @@
-# restaurant_app
+# Flutter App Restaurant API
+<h1 align="center">Restaurant API - Dicoding</h1>
+<p align="center">  
+A simple Restaurant App getting API with Dio, state management with Provider + Flutter Hooks, and Material Design based on architecture.
+</p>
 
-A new Flutter project.
+## Tech stack & Open-source libraries
+- [Flutter](https://flutter.dev/) based
+- [Provider](https://pub.dev/packages/provider) + [Hooks](https://pub.dev/packages/flutter_hooks) for State Management
+- [Dio](https://pub.dev/packages/dio) - Construct the REST APIs.
+- [Freezed](https://pub.dev/packages/freezed)
+- [Clean Architecture] - An architecture for separating the concern so the code would be easy to maintain.
 
-## Getting Started
+## Architecture
+Restaurant App is based on the Clean Architecture
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Open API
+Restaurant App is using the [RestaurantAPI](https://restaurant-api.dicoding.dev/#/) for constructing RESTful API.
