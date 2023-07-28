@@ -7,4 +7,8 @@ class CategoriesResMapper {
   static Categories mapResponseToDomain(CategoriesResponse response) {
     return Categories(name: response.name);
   }
+
+  static CategoriesResponse mapDomainToJson(Categories response) {
+    return CategoriesResponse(name: response.name);
+  }
 }

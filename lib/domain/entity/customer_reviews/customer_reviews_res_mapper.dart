@@ -11,4 +11,12 @@ class CustomerReviewsResMapper {
       date: response.date,
     );
   }
+
+  static CustomerReviewsResponse mapDomainToJson(CustomerReviews response) {
+    return CustomerReviewsResponse(
+      name: response.name,
+      review: response.review,
+      date: response.date,
+    );
+  }
 }

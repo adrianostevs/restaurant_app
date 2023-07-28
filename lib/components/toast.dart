@@ -8,7 +8,7 @@ class ToastMessage {
       msg: message ?? '',
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,
-      backgroundColor: Colors.black12,
+      backgroundColor: Colors.black,
     );
   }
 }

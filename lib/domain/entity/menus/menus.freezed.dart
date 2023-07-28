@@ -14,11 +14,16 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Menus _$MenusFromJson(Map<String, dynamic> json) {
+  return _Menus.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Menus {
   List<Categories>? get foods => throw _privateConstructorUsedError;
   List<Categories>? get drinks => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $MenusCopyWith<Menus> get copyWith => throw _privateConstructorUsedError;
 }
@@ -95,11 +100,14 @@ class __$$_MenusCopyWithImpl<$Res> extends _$MenusCopyWithImpl<$Res, _$_Menus>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Menus implements _Menus {
   _$_Menus({final List<Categories>? foods, final List<Categories>? drinks})
       : _foods = foods,
         _drinks = drinks;
+
+  factory _$_Menus.fromJson(Map<String, dynamic> json) =>
+      _$$_MenusFromJson(json);
 
   final List<Categories>? _foods;
   @override
@@ -135,6 +143,7 @@ class _$_Menus implements _Menus {
             const DeepCollectionEquality().equals(other._drinks, _drinks));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -146,12 +155,21 @@ class _$_Menus implements _Menus {
   @pragma('vm:prefer-inline')
   _$$_MenusCopyWith<_$_Menus> get copyWith =>
       __$$_MenusCopyWithImpl<_$_Menus>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_MenusToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Menus implements Menus {
   factory _Menus(
       {final List<Categories>? foods,
       final List<Categories>? drinks}) = _$_Menus;
+
+  factory _Menus.fromJson(Map<String, dynamic> json) = _$_Menus.fromJson;
 
   @override
   List<Categories>? get foods;

@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Restaurants _$RestaurantsFromJson(Map<String, dynamic> json) {
+  return _Restaurants.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Restaurants {
   String? get id => throw _privateConstructorUsedError;
@@ -27,7 +31,9 @@ mixin _$Restaurants {
   List<Categories>? get categories => throw _privateConstructorUsedError;
   List<CustomerReviews>? get customerReviews =>
       throw _privateConstructorUsedError;
+  bool? get isFavorite => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $RestaurantsCopyWith<Restaurants> get copyWith =>
       throw _privateConstructorUsedError;
@@ -49,7 +55,8 @@ abstract class $RestaurantsCopyWith<$Res> {
       double? rating,
       Menus? menus,
       List<Categories>? categories,
-      List<CustomerReviews>? customerReviews});
+      List<CustomerReviews>? customerReviews,
+      bool? isFavorite});
 
   $MenusCopyWith<$Res>? get menus;
 }
@@ -77,6 +84,7 @@ class _$RestaurantsCopyWithImpl<$Res, $Val extends Restaurants>
     Object? menus = freezed,
     Object? categories = freezed,
     Object? customerReviews = freezed,
+    Object? isFavorite = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -119,6 +127,10 @@ class _$RestaurantsCopyWithImpl<$Res, $Val extends Restaurants>
           ? _value.customerReviews
           : customerReviews // ignore: cast_nullable_to_non_nullable
               as List<CustomerReviews>?,
+      isFavorite: freezed == isFavorite
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 
@@ -153,7 +165,8 @@ abstract class _$$_RestaurantsCopyWith<$Res>
       double? rating,
       Menus? menus,
       List<Categories>? categories,
-      List<CustomerReviews>? customerReviews});
+      List<CustomerReviews>? customerReviews,
+      bool? isFavorite});
 
   @override
   $MenusCopyWith<$Res>? get menus;
@@ -180,6 +193,7 @@ class __$$_RestaurantsCopyWithImpl<$Res>
     Object? menus = freezed,
     Object? categories = freezed,
     Object? customerReviews = freezed,
+    Object? isFavorite = freezed,
   }) {
     return _then(_$_Restaurants(
       id: freezed == id
@@ -222,12 +236,16 @@ class __$$_RestaurantsCopyWithImpl<$Res>
           ? _value._customerReviews
           : customerReviews // ignore: cast_nullable_to_non_nullable
               as List<CustomerReviews>?,
+      isFavorite: freezed == isFavorite
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Restaurants implements _Restaurants {
   _$_Restaurants(
       {this.id,
@@ -239,9 +257,13 @@ class _$_Restaurants implements _Restaurants {
       this.rating,
       this.menus,
       final List<Categories>? categories,
-      final List<CustomerReviews>? customerReviews})
+      final List<CustomerReviews>? customerReviews,
+      this.isFavorite})
       : _categories = categories,
         _customerReviews = customerReviews;
+
+  factory _$_Restaurants.fromJson(Map<String, dynamic> json) =>
+      _$$_RestaurantsFromJson(json);
 
   @override
   final String? id;
@@ -280,8 +302,11 @@ class _$_Restaurants implements _Restaurants {
   }
 
   @override
+  final bool? isFavorite;
+
+  @override
   String toString() {
-    return 'Restaurants(id: $id, name: $name, description: $description, city: $city, address: $address, pictureId: $pictureId, rating: $rating, menus: $menus, categories: $categories, customerReviews: $customerReviews)';
+    return 'Restaurants(id: $id, name: $name, description: $description, city: $city, address: $address, pictureId: $pictureId, rating: $rating, menus: $menus, categories: $categories, customerReviews: $customerReviews, isFavorite: $isFavorite)';
   }
 
   @override
@@ -302,9 +327,12 @@ class _$_Restaurants implements _Restaurants {
             const DeepCollectionEquality()
                 .equals(other._categories, _categories) &&
             const DeepCollectionEquality()
-                .equals(other._customerReviews, _customerReviews));
+                .equals(other._customerReviews, _customerReviews) &&
+            (identical(other.isFavorite, isFavorite) ||
+                other.isFavorite == isFavorite));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -317,13 +345,21 @@ class _$_Restaurants implements _Restaurants {
       rating,
       menus,
       const DeepCollectionEquality().hash(_categories),
-      const DeepCollectionEquality().hash(_customerReviews));
+      const DeepCollectionEquality().hash(_customerReviews),
+      isFavorite);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_RestaurantsCopyWith<_$_Restaurants> get copyWith =>
       __$$_RestaurantsCopyWithImpl<_$_Restaurants>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_RestaurantsToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Restaurants implements Restaurants {
@@ -337,7 +373,11 @@ abstract class _Restaurants implements Restaurants {
       final double? rating,
       final Menus? menus,
       final List<Categories>? categories,
-      final List<CustomerReviews>? customerReviews}) = _$_Restaurants;
+      final List<CustomerReviews>? customerReviews,
+      final bool? isFavorite}) = _$_Restaurants;
+
+  factory _Restaurants.fromJson(Map<String, dynamic> json) =
+      _$_Restaurants.fromJson;
 
   @override
   String? get id;
@@ -359,6 +399,8 @@ abstract class _Restaurants implements Restaurants {
   List<Categories>? get categories;
   @override
   List<CustomerReviews>? get customerReviews;
+  @override
+  bool? get isFavorite;
   @override
   @JsonKey(ignore: true)
   _$$_RestaurantsCopyWith<_$_Restaurants> get copyWith =>

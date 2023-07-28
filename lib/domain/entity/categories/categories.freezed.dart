@@ -14,10 +14,15 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Categories _$CategoriesFromJson(Map<String, dynamic> json) {
+  return _Categories.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Categories {
   String? get name => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CategoriesCopyWith<Categories> get copyWith =>
       throw _privateConstructorUsedError;
@@ -90,9 +95,12 @@ class __$$_CategoriesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Categories implements _Categories {
   _$_Categories({this.name});
+
+  factory _$_Categories.fromJson(Map<String, dynamic> json) =>
+      _$$_CategoriesFromJson(json);
 
   @override
   final String? name;
@@ -110,6 +118,7 @@ class _$_Categories implements _Categories {
             (identical(other.name, name) || other.name == name));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name);
 
@@ -118,10 +127,20 @@ class _$_Categories implements _Categories {
   @pragma('vm:prefer-inline')
   _$$_CategoriesCopyWith<_$_Categories> get copyWith =>
       __$$_CategoriesCopyWithImpl<_$_Categories>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CategoriesToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Categories implements Categories {
   factory _Categories({final String? name}) = _$_Categories;
+
+  factory _Categories.fromJson(Map<String, dynamic> json) =
+      _$_Categories.fromJson;
 
   @override
   String? get name;
