@@ -5,6 +5,7 @@ import '../categories/categories.dart';
 import '../customer_reviews/customer_reviews.dart';
 
 part 'restaurants.freezed.dart';
+part 'restaurants.g.dart';
 
 @freezed
 class Restaurants with _$Restaurants {
@@ -19,5 +20,9 @@ class Restaurants with _$Restaurants {
     Menus? menus,
     List<Categories>? categories,
     List<CustomerReviews>? customerReviews,
+    bool? isFavorite,
   }) = _Restaurants;
+
+  factory Restaurants.fromJson(Map<String, dynamic> json) =>
+      _$RestaurantsFromJson(json);
 }

@@ -14,12 +14,17 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+CustomerReviews _$CustomerReviewsFromJson(Map<String, dynamic> json) {
+  return _CustomerReviews.fromJson(json);
+}
+
 /// @nodoc
 mixin _$CustomerReviews {
   String? get name => throw _privateConstructorUsedError;
   String? get review => throw _privateConstructorUsedError;
   String? get date => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CustomerReviewsCopyWith<CustomerReviews> get copyWith =>
       throw _privateConstructorUsedError;
@@ -112,9 +117,12 @@ class __$$_CustomerReviewsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_CustomerReviews implements _CustomerReviews {
   _$_CustomerReviews({this.name, this.review, this.date});
+
+  factory _$_CustomerReviews.fromJson(Map<String, dynamic> json) =>
+      _$$_CustomerReviewsFromJson(json);
 
   @override
   final String? name;
@@ -138,6 +146,7 @@ class _$_CustomerReviews implements _CustomerReviews {
             (identical(other.date, date) || other.date == date));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name, review, date);
 
@@ -146,6 +155,13 @@ class _$_CustomerReviews implements _CustomerReviews {
   @pragma('vm:prefer-inline')
   _$$_CustomerReviewsCopyWith<_$_CustomerReviews> get copyWith =>
       __$$_CustomerReviewsCopyWithImpl<_$_CustomerReviews>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CustomerReviewsToJson(
+      this,
+    );
+  }
 }
 
 abstract class _CustomerReviews implements CustomerReviews {
@@ -153,6 +169,9 @@ abstract class _CustomerReviews implements CustomerReviews {
       {final String? name,
       final String? review,
       final String? date}) = _$_CustomerReviews;
+
+  factory _CustomerReviews.fromJson(Map<String, dynamic> json) =
+      _$_CustomerReviews.fromJson;
 
   @override
   String? get name;

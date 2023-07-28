@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_app/components/loading_dialog.dart';
 import 'package:restaurant_app/data/datasource/review_datasource/review_datasource_impl.dart';
+import 'package:restaurant_app/data/local/database/database_helper.dart';
 import 'package:restaurant_app/data/repository/review_repository_impl.dart';
 import 'package:restaurant_app/data/service/remote_client.dart';
 import 'package:restaurant_app/domain/entity/add_review/add_review.dart';
@@ -34,7 +35,9 @@ class _DetailScreenState extends State<DetailScreen> {
             reviewRepository:
                 ReviewRepositoryImpl(ReviewDatasourceImpl(RemoteClient())),
             addReviewUsecase: AddReviewInteractor(
-                ReviewRepositoryImpl(ReviewDatasourceImpl(RemoteClient())))),
+                ReviewRepositoryImpl(ReviewDatasourceImpl(RemoteClient()))),
+            databaseHelper: DatabaseHelper(),
+            id: widget.restaurant.id ?? ''),
         child: DetailPage(
           restaurant: widget.restaurant,
         ));
@@ -147,6 +150,7 @@ class _DetailPage extends State<DetailPage> {
       extendBodyBehindAppBar: true,
       body: SingleChildScrollView(
         child: Consumer<DetailProvider>(builder: (context, value, _) {
+          value.restaurant = widget.restaurant;
           if (value.listCustomerReviews.isEmpty) {
             value.setReview(widget.restaurant.customerReviews ?? []);
           }
@@ -156,16 +160,35 @@ class _DetailPage extends State<DetailPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.network(
-                      "${ApiConstants.BASE_URL}${ApiConstants.GET_IMAGE}${widget.restaurant.pictureId}"),
+                    "${ApiConstants.BASE_URL}${ApiConstants.GET_IMAGE}${widget.restaurant.pictureId}",
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                  ),
                   const SizedBox(
                     height: 16,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 16),
-                    child: Text(
-                      widget.restaurant.name ?? '',
-                      style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.w600),
+                    padding: const EdgeInsets.only(left: 16, right: 8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          widget.restaurant.name ?? '',
+                          style: const TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w600),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            value.addRemoveFavorite(value.isFavorite);
+                          },
+                          icon: Icon(
+                            value.isFavorite
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                            color: Colors.red,
+                          ),
+                        )
+                      ],
                     ),
                   ),
                   const SizedBox(

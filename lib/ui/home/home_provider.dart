@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:restaurant_app/data/datasource/restaurant_datasource/restaurant_datasource.dart';
 import 'package:restaurant_app/data/service/remote_client.dart';
 import 'package:restaurant_app/domain/entity/list_restaurants/list_restaurants.dart';
-import 'package:restaurant_app/domain/entity/restaurants/restaurants.dart';
 import 'package:restaurant_app/domain/entity/search/search.dart';
 import 'package:restaurant_app/domain/repository/restaurant_repository.dart';
 import 'package:restaurant_app/domain/usecase/get_detail_restaurant/get_detail_restaurant_usecase.dart';
@@ -32,13 +31,11 @@ class HomeProvider extends ChangeNotifier {
     getListRestaurant();
   }
 
-  late ListRestaurants _listRestaurants;
-  late HomeState _state;
-  late Restaurants _restaurants;
+  ListRestaurants _listRestaurants = ListRestaurants();
+  HomeState _state = HomeState.success;
   String _message = '';
   String get message => _message;
   ListRestaurants get listRestaurants => _listRestaurants;
-  Restaurants get restaurants => _restaurants;
   HomeState get state => _state;
   Search searchRequest = Search();
 

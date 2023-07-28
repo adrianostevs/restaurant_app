@@ -37,4 +37,13 @@ class RestaurantResMapper {
         categories: listCategories,
         customerReviews: listCustomerReviews);
   }
+
+  static RestaurantResponse mapDomainToJson(Restaurants restaurants) {
+    return RestaurantResponse(
+        id: restaurants.id,
+        name: restaurants.name,
+        pictureId: restaurants.pictureId,
+        city: restaurants.city,
+        rating: restaurants.rating);
+  }
 }
