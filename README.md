@@ -9,6 +9,7 @@ A simple Restaurant App getting API with Dio, state management with Provider + F
 - [Provider](https://pub.dev/packages/provider) + [Hooks](https://pub.dev/packages/flutter_hooks) for State Management
 - [Dio](https://pub.dev/packages/dio) - Construct the REST APIs.
 - [Freezed](https://pub.dev/packages/freezed)
+- [SQLite](https://pub.dev/packages/sqflite)
 - [Clean Architecture] - An architecture for separating the concern so the code would be easy to maintain.
 
 ## Architecture
